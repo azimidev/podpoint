@@ -76,7 +76,7 @@ docker run -d --name podpoint-api \
     -p 8000:80 \
     -w /var/www/html/ \
     -v ${API_BOOTSTRAP_SCRIPT_PATH}:/bin/dev-start-api.sh \
-    -v ${PROJECT_DIR}/api:/var/www/html/ \
+    -v ${PROJECT_DIR}/public:/var/www/html/ \
     -it fauria/lamp bash /bin/dev-start-api.sh
 
 # Api Docs
@@ -91,5 +91,5 @@ docker run -d --name podpoint-front \
     -p 8080:80 \
     -w /var/www/html/ \
     -v ${FRONT_BOOTSTRAP_SCRIPT_PATH}:/bin/dev-start-front.sh \
-    -v ${PROJECT_DIR}/front/public:/var/www/html/ \
+    -v ${PROJECT_DIR}/front/dist:/var/www/html/ \
     -it fauria/lamp bash /bin/dev-start-front.sh
