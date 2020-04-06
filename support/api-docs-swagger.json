@@ -1,0 +1,253 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is the Pod Point API docs..",
+    "version": "1.0.0",
+    "title": "Pod Point API Docs"
+  },
+  "host": "localhost:8000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "charge",
+      "description": "Everything about the charges on our units"
+    },
+    {
+      "name": "unit",
+      "description": "Everything about our Units"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/units": {
+      "get": {
+        "tags": ["unit"],
+        "summary": "Finds all Units",
+        "description": "",
+        "operationId": "findAllUnits",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Unit"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/units/{unitId}": {
+      "get": {
+        "tags": ["unit"],
+        "summary": "Gets details of a unit and its charges history",
+        "operationId": "findSingleUnitById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "unitId",
+            "in": "path",
+            "description": "ID of the unit to look for",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "$ref": "#/definitions/Unit"
+          },
+          "400": {
+            "description": "Invalid request (invalid unit ID)"
+          },
+          "404": {
+            "description": "No charges found for given unit"
+          }
+        }
+      },
+      "post": {
+        "tags": ["charge"],
+        "summary": "Create a charge on a given unit",
+        "description": "Used when a charge starts on a given unit",
+        "operationId": "createdChargeOnUnit",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "unitId",
+            "in": "path",
+            "description": "ID of the unit to look for",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Start time of the charge",
+            "required": true,
+            "schema": {
+              "start": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2017-11-01 15:35:20"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "headers": {
+              "X-Entity-ID": {
+                "type": "integer",
+                "format": "int64",
+                "description": "The fresh ID generated for the added entity."
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request (invalid unit ID or body)"
+          }
+        }
+      }
+    },
+    "/units/{unitId}/charges/{chargeId}": {
+      "patch": {
+        "tags": ["charge"],
+        "summary": "Update a charge on a given unit",
+        "description": "Used when a charge stops on a given unit",
+        "operationId": "updateChargeById",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "unitId",
+            "in": "path",
+            "description": "ID of the unit to look for",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "chargeId",
+            "in": "path",
+            "description": "ID of the charge to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Charge properties that needs to be updated",
+            "required": true,
+            "schema": {
+              "end": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2017-11-01 15:35:20"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid request (invalid ID or body)"
+          },
+          "404": {
+            "description": "Charge not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Charge": {
+      "type": "object",
+      "required": [
+        "start",
+        "end"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "start": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2017-11-01 15:35:20"
+        },
+        "end": {
+          "type": ["string",'|null'],
+          "format": "date-time",
+          "example": "2017-11-01 15:35:20"
+        }
+      }
+    },
+    "Unit": {
+      "type": "object",
+      "required": [
+        "name",
+        "address",
+        "postcode",
+        "status",
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "address": {
+          "type": "string",
+          "example": "Discovery House, 28–42 Banner Street"
+        },
+        "postcode": {
+          "type": "string",
+          "example": "EC1Y 8QE"
+        },
+        "name": {
+          "type": "string",
+          "example": "Pod Point Office"
+        },
+        "status": {
+          "type": "string",
+          "description": "Unit status",
+          "example": "available",
+          "enum": [
+            "available",
+            "charging"
+          ]
+        },
+        "charges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Charge"
+          }
+        }
+      }
+    }
+  }
+}
