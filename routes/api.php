@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:api')->get('/', function() {
-// //     return 'hello';
-// // });
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['api'], function() {
+    Route::get('/units', 'UnitController@index');
+    Route::get('/units/{unit}', 'UnitController@show');
+    Route::post('/units/{unit}', 'ChargeController@store');
+    Route::patch('/units/{unit}/charge/{charge}', 'ChargeController@update');
 });
+
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });

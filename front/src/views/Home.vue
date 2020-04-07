@@ -1,18 +1,40 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div class="home">
+        <nav class="panel">
+            <div class="panel-block" v-for="(unit, index) in units">
+                <Unit :unit="unit" :key="unit.id"/>
+            </div>
+        </nav>
+    </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+    import axios from 'axios';
+    // @ is an alias to /src
+    import Unit from '@/components/Unit';
 
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        name: 'Home',
+        components: {Unit},
+        data() {
+            return {
+                units: [],
+            };
+        },
+        mounted() {
+            axios('/api/units').then(({data}) => this.units = data);
+        },
+    };
 </script>
+
+<style lang="scss" scoped>
+    .home {
+        .panel-block {
+            padding-top: 1.5em;
+        }
+
+        .panel-tabs:not(:last-child), .panel-block:not(:last-child) {
+            border-bottom: 2px solid #EDEDED;
+        }
+    }
+</style>
