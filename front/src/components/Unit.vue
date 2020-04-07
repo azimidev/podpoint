@@ -9,9 +9,14 @@
                 <p class="has-text-grey">{{ unit.address }} - {{ unit.postcode }}</p>
             </div>
             <div class="column is-3 is-center is-center right-column">
-                <div class="has-text-primary is-uppercase">Available</div>
+                <div :class="[ status === 'available' ? 'has-text-primary' : 'has-text-orange ', 'is-uppercase']">
+                    {{ status }}
+                </div>
                 <div>
-                    <button class="button is-primary">Start</button>
+                    <button @click="toggleStatus()"
+                            :class="['button', status === 'available' ? 'is-primary' : 'is-orange']">
+                        {{ status === 'available' ? 'Start' : 'Stop' }}
+                    </button>
                 </div>
             </div>
         </div>
@@ -28,6 +33,18 @@
         props: {
             unit: Object,
         },
+        data() {
+            return {
+                status: this.unit.status,
+            };
+        },
+        methods: {
+            toggleStatus() {
+                this.status === 'available'
+                    ? this.status = 'charging'
+                    : this.status = 'available';
+            },
+        },
     };
 </script>
 
@@ -43,5 +60,14 @@
         display: flex;
         flex-direction: column;
         font-weight: 600;
+    }
+
+    .has-text-orange {
+        color: orange;
+    }
+
+    .is-orange {
+        color: white;
+        background-color: orange;
     }
 </style>
