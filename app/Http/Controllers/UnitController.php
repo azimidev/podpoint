@@ -10,7 +10,7 @@ class UnitController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \App\Unit[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Http\Response
+     * @return \App\Unit[]|\Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {

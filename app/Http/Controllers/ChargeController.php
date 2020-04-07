@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Unit;
 use App\Charge;
-use Illuminate\Http\Request;
 
 class ChargeController extends Controller
 {
@@ -28,7 +27,7 @@ class ChargeController extends Controller
      *
      * @param \App\Unit $unit
      * @param \App\Charge $charge
-     * @return bool|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|void
+     * @return bool|\Illuminate\Http\Response|void
      */
     public function update(Unit $unit, Charge $charge)
     {
