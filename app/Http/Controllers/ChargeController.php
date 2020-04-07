@@ -12,17 +12,15 @@ class ChargeController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \App\Unit $unit
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Http\Response
      */
     public function store(Unit $unit)
     {
         if ($unit->update(['status' => 'charging'])) {
-            $unit->charges()->create([
-                'start' => now(),
-            ]);
+            return $unit->charges()->create(['start' => now()]);
         }
 
-        return response('OK');
+        return response('Could not update unit.', 501);
     }
 
     /**
