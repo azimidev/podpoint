@@ -26,13 +26,16 @@ class ChargeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
      * @param \App\Unit $unit
      * @param \App\Charge $charge
-     * @return void
+     * @return bool|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|void
      */
-    public function update(Request $request, Unit $unit, Charge $charge)
+    public function update(Unit $unit, Charge $charge)
     {
-        //
+        if ($unit->update(['status' => 'available'])) {
+            return $charge->update(['end' => now()]);
+        }
+
+        return response('Could not update unit.', 501);
     }
 }

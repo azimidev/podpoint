@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="is-center has-text-grey">
-            <span v-if="charges.length > 0">{{ charges.length }} charges</span>
+            <span v-if="charges.length > 0">{{ charges.length }} charge(s)</span>
             <span v-else>No charges yet</span>
         </div>
     </div>
@@ -39,7 +39,7 @@
             return {
                 status: this.unit.status,
                 charges: this.unit.charges,
-                charge: {},
+                charge: this.unit.charges[0] || {},
             };
         },
         computed: {
