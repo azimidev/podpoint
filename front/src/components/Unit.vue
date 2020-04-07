@@ -9,13 +9,13 @@
                 <p class="has-text-grey">{{ unit.address }} - {{ unit.postcode }}</p>
             </div>
             <div class="column is-3 is-center is-center right-column">
-                <div :class="[ status === 'available' ? 'has-text-primary' : 'has-text-orange ', 'is-uppercase']">
+                <div :class="[ available ? 'has-text-primary' : 'has-text-orange ', 'is-uppercase']">
                     {{ status }}
                 </div>
                 <div>
                     <button @click="toggleStatus()"
-                            :class="['button', status === 'available' ? 'is-primary' : 'is-orange']">
-                        {{ status === 'available' ? 'Start' : 'Stop' }}
+                            :class="['button', available ? 'is-primary' : 'is-orange']">
+                        {{ available ? 'Start' : 'Stop' }}
                     </button>
                 </div>
             </div>
@@ -38,9 +38,17 @@
                 status: this.unit.status,
             };
         },
+        computed: {
+            available() {
+                return this.status === 'available';
+            },
+            charging() {
+                return this.status === 'charging';
+            },
+        },
         methods: {
             toggleStatus() {
-                this.status === 'available'
+                this.available
                     ? this.status = 'charging'
                     : this.status = 'available';
             },
