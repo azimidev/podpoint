@@ -3,15 +3,18 @@
 > Note:
 > You need PHP v7.2.5+, MySQL v8.0+, composer and yarn v1.22+ installed in your unix-based machine. **I have not used Docker**.
 
-1. Create a database `podpointapi` in MySQL
-2. In `.env.example` update these to match yours.  
+1. clone the repo `git clone git@github.com:hassanazimi/podpoint.git`
+2. Create a database `podpointapi` in MySQL
+3. Navigate to the app directory `cd podpoint` and open in in your text editor.
+4. In `.env.example` update these to match yours.  
+
 ```dotenv
 DB_DATABASE=
 DB_USERNAME=
 DB_PASSWORD=
 ```
 
-3. In your command line and on the root of the app run the command below.
+5.  Run the command below.
 
 ```bash
 ./bin/install.sh
@@ -24,7 +27,7 @@ This will
     - Migrate and seed the database
     - Install Node dependencies and build the front
     
-4. Run `php artisan serve` to see the app on [http://127.0.0.1:8000](http://127.0.0.1:8000)
+6. Run `php artisan serve` to see the app on [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 ## Description
 
