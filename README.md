@@ -40,6 +40,14 @@ This will:
 - There are some tests written in `test` directory using `phpunut`.
 - See comments below in "About you" section.
 
+# Screenshots
+
+These are screenshots of what i've built. I hope you like it:
+
+![Header](./support/header.png)
+
+![Footer](./support/footer.png)
+
 ---
 
 <p align="center">
