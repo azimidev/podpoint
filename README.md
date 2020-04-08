@@ -3,8 +3,8 @@
 > Note:
 > You need PHP v7.2.5+, MySQL v8.0+, composer and yarn v1.22+ installed in your unix-based machine. **I have not used Docker**.
 
-1. clone the repo `git clone git@github.com:hassanazimi/podpoint.git`
-2. Create a database `podpointapi` in MySQL
+1. Clone the repo `git clone git@github.com:hassanazimi/podpoint.git`
+2. Create a database called `podpointapi` or anything else in MySQL.
 3. Navigate to the app directory `cd podpoint` and open in in your text editor.
 4. In `.env.example` update these to match yours.  
 
@@ -20,14 +20,16 @@ DB_PASSWORD=
 ./bin/install.sh
 ```
 
-This will 
-    - Install composer dependencies
-    - Install composer copy the `.env.exapmle` to `.env`
-    - Generate app key
-    - Migrate and seed the database
-    - Install Node dependencies and build the front
+This will: 
+- Install composer dependencies.
+- Copy the `.env.exapmle` to `.env`.
+- Generate app key.
+- Migrate and seed the database.
+- Install Node dependencies and build the front.
     
 6. Run `php artisan serve` to see the app on [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+
 
 ## Description
 
@@ -154,6 +156,8 @@ The test is split into 2 sections presenting the need for back end & front end:
 > I did not use Docker for this application. Front-end and back-end are decoupled. 
 
 > I have used Vue.js for front-end and Laravel for back-end. I would use Nuxt.js and Vuex flux pattern for larger apps.
+
+> I have used [bulma](https://bulma.io) flex box based CSS framework.
 
 > Building front-end will generate JS and CSS in the `public` folder and it will also create minified HTML in `resources/views` folder.
 
