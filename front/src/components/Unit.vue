@@ -2,7 +2,7 @@
     <div class="container">
         <div class="columns is-mobile">
             <div class="column is-2 is-center">
-                <i class="fas fa-map-marker-alt fa-3x has-text-primary"></i>
+                <img src="@/assets/marker.svg" alt="marker" width="50">
             </div>
             <div class="column is-7">
                 <p><strong>{{ unit.name }}</strong></p>
@@ -77,24 +77,14 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-    .is-center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
     .right-column {
         display: flex;
         flex-direction: column;
         font-weight: 600;
     }
 
-    .has-text-orange {
-        color: orange;
-    }
-
-    .is-orange {
-        color: white;
-        background-color: orange;
+    .button {
+        border-radius: 0;
+        min-width: 85px;
     }
 </style>
