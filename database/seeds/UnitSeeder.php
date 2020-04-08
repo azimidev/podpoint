@@ -11,6 +11,6 @@ class UnitSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Unit::class, 5)->create();
     }
 }
