@@ -27,6 +27,3 @@ php artisan db:seed
 cd front
 yarn
 yarn build
-
-cd ..
-php artisan serve

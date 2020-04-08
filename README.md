@@ -1,3 +1,40 @@
+# Installation
+
+#### You need PHP, MySQL, composer and yarn installed in your unix based machine.
+
+1. Create a database `podpointapi` in MySQL
+2. In `.env.example` update these to match yours.  
+```dotenv
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+```
+
+3. In your command line and on the root of the app run the command below.
+
+```bash
+./bin/install.sh
+```
+
+This will 
+    - Install composer dependencies
+    - Install composer copy the `.env.exapmle` to `.env`
+    - Generate app key
+    - Migrate and seed the database
+    - Install Node dependencies and build the front
+    
+4. Run `php artisan serve` to see the app on [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+## Description
+
+- Front end code is inside `front` directory.
+- In `front` directory command `yarn install` will install the node dependencies
+- In `front` directory command `yarn serve` will serve the front-end app to work on it but you need to run `yarn build` at the end.
+- In `front` directory command `yarn build` will build the front-end and will compile the JS, CSS and HTML.
+- See comments below in "About you" section.
+
+---
+
 <p align="center">
     <img alt="Pod Point" height="150" src="./support/logo.png" title="Pod Point" width="498" />
 </p>
@@ -109,7 +146,10 @@ The test is split into 2 sections presenting the need for back end & front end:
 <a id="your-comments"></a>
 ### Your comments (optional)
 
-> ***NOTE: If you have any comments, please write them down in this section.***
+> I did not use Docker for this application. Front-end and back-end are decoupled. 
+> I have used Vue.js for front-end and Laravel for back-end. I would use Nuxt.js and Vuex flux pattern for larger apps.
+> Building front-end will generate JS and CSS in the `public` folder and it will also create minified HTML in `resources/views` folder.
+> If you see any errors by running `./bin/install.sh`, please have a look inside this file and see what is related to, it might be related to your database credentials or not having `yarn`, `MySQL` or `PHP composer`
 
 ***
 
