@@ -15,14 +15,14 @@
 
     export default {
         name: 'Home',
-        components: {Unit},
+        components: { Unit },
         data() {
             return {
                 units: [],
             };
         },
         mounted() {
-            axios('/api/units').then(({data}) => this.units = data);
+            axios('/api/units').then(({ data }) => this.units = data);
         },
     };
 </script>
