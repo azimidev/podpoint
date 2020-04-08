@@ -1,6 +1,7 @@
 # Installation
 
-#### You need PHP, MySQL, composer and yarn installed in your unix based machine.
+> Note:
+> You need PHP v7.2.5+, MySQL v8.0+, composer and yarn v1.22+ installed in your unix-based machine. **I have not used Docker**.
 
 1. Create a database `podpointapi` in MySQL
 2. In `.env.example` update these to match yours.  
@@ -31,6 +32,7 @@ This will
 - In `front` directory command `yarn install` will install the node dependencies
 - In `front` directory command `yarn serve` will serve the front-end app to work on it but you need to run `yarn build` at the end.
 - In `front` directory command `yarn build` will build the front-end and will compile the JS, CSS and HTML.
+- There are some tests written in `test` directory using `phpunut`.
 - See comments below in "About you" section.
 
 ---
