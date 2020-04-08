@@ -154,13 +154,13 @@ The test is split into 2 sections presenting the need for back end & front end:
 ### Your comments (optional)
 
 > I did not use Docker for this application. Front-end and back-end are decoupled. 
-
+>
 > I have used Vue.js for front-end and Laravel for back-end. I would use Nuxt.js and Vuex flux pattern for larger apps.
-
+>
 > I have used [bulma](https://bulma.io) flex box based CSS framework.
-
+>
 > Building front-end will generate JS and CSS in the `public` folder and it will also create minified HTML in `resources/views` folder.
-
+>
 > If you see any errors by running `./bin/install.sh`, please have a look inside this file and see what is related to, it might be related to your database credentials or not having `yarn`, `MySQL` or `PHP composer`
 
 ***
