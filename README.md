@@ -45,8 +45,8 @@ This will:
 These are screenshots of what I've built. Very similar to the design. I hope you like it:
 
 <p align="center">
-    <img alt="Pod Point" src="./support/header.png" title="header" width="425" />
-    <img alt="Pod Point" src="./support/footer.png" title="footer" width="425" />
+    <img alt="Pod Point" src="./support/header.png" title="header" width="450" />
+    <img alt="Pod Point" src="./support/footer.png" title="footer" width="450" />
 </p>
 
 ---
