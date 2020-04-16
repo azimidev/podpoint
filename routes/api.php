@@ -13,13 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['api'], function() {
-    Route::get('/units', 'UnitController@index');
-    Route::get('/units/{unit}', 'UnitController@show');
-    Route::post('/units/{unit}', 'ChargeController@store');
-    Route::patch('/units/{unit}/charges/{charge}', 'ChargeController@update');
-});
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::get('/units', 'UnitController@index');
+Route::get('/units/{unit}', 'UnitController@show');
+Route::post('/units/{unit}', 'ChargeController@store');
+Route::patch('/units/{unit}/charges/{charge}', 'ChargeController@update');
